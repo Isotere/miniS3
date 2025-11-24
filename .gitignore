@@ -1,0 +1,7 @@
+cmake
+bin
+compile_commands.json
+
+.idea
+
+build
