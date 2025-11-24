@@ -8,8 +8,8 @@ TARGET ?= s3store
 BUILD_TYPE ?= Debug
 ASAN ?= ON
 UBSAN ?= ON
-CXX := /opt/homebrew/opt/llvm/bin/clang++
-# CXX := /usr/bin/clang++
+#CXX := /opt/homebrew/opt/llvm/bin/clang++
+CXX := /usr/bin/clang++
 
 # Команда CMake для полной сборки (все цели)
 CMAKE_ALL = \
@@ -116,7 +116,7 @@ release: BUILD_TYPE := Release
 release: ASAN := OFF
 release: UBSAN := OFF
 release: $(TARGET)
-	@echo "🚀 Собрано в Release: ./bin/release/$(TARGET)"
+	@echo "🚀 Собрано в Release: ./bin/$(TARGET)"
 
 
 
