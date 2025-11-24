@@ -9,6 +9,7 @@ BUILD_TYPE ?= Debug
 ASAN ?= ON
 UBSAN ?= ON
 CXX := /opt/homebrew/opt/llvm/bin/clang++
+# CXX := /usr/bin/clang++
 
 # Команда CMake для полной сборки (все цели)
 CMAKE_ALL = \
@@ -77,8 +78,7 @@ endif
 	@$(CMAKE_TARGET) >/dev/null
 	@cmake --build $(BUILD_DIR) --target $(TARGET) -- -j$(shell sysctl -n hw.logicalcpu 2>/dev/null || nproc)
 	@$(MAKE) link-cc
-	@echo "✅ $(TARGET) собран. Запуск:"
-	@./bin/$(TARGET)
+	@echo "✅ $(TARGET) собран."
 
 .PHONY: rebuild-target
 rebuild-target: clean-target $(TARGET)
@@ -111,6 +111,7 @@ else
 	@leaks --atExit -- ./bin/$(TARGET) 2>/dev/null || true
 endif
 
+.PHONY: release
 release: BUILD_TYPE := Release
 release: ASAN := OFF
 release: UBSAN := OFF
@@ -130,6 +131,7 @@ setup:
 	@which $(CXX) &>/dev/null || { echo "❌ clang++ не найден по $(CXX). Установи: brew install llvm"; exit 1; }
 	@echo "✅ Все зависимости на месте."
 
+.PHONY: new
 new:
 ifeq ($(TARGET),)
 	$(error ❌ Укажи TARGET=name)

@@ -93,6 +93,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/bin")
 # === Остальное без изменений ===
 set(BUILD_TARGET "" CACHE STRING "Target to build (e.g. day1_raii)")
 include_directories(libs)
+include_directories(include)
 include_directories(${Boost_INCLUDE_DIR})
 
 # FetchContent added in CMake 3.11, downloads during the configure step
