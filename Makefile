@@ -4,7 +4,7 @@ SRC_DIR := src
 COMPILE_COMMANDS := compile_commands.json
 
 # Настройки по умолчанию
-TARGET ?= hello_world
+TARGET ?= s3store
 BUILD_TYPE ?= Debug
 ASAN ?= ON
 UBSAN ?= ON
